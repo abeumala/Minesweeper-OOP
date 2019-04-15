@@ -20,7 +20,9 @@ body {
 }
 
 .col {
-	display: inline-block;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	width: 40px;
 	height: 40px;
 	background-color: grey;
@@ -28,6 +30,8 @@ body {
 }
 
 .row {
+	display: flex;
+	flex-direction: row;
 	font-size: 0px;
 	border-bottom: 0px;
 }
@@ -43,7 +47,7 @@ body {
 
 
 .bomb {    
-	background-color: red;
+	/*background-color: red;*/
 	width: 40px;
 	height: 40px;
 	display: inline-block;
@@ -52,7 +56,18 @@ body {
 }
 
 .bomb:hover {
-	background-color: aquamarine;
+	cursor: pointer;
+	background-color: #fff;
+}
+
+.bombcount {
+	color: #000;
+	font-size: 15px;
+}
+
+.bombImage {
+	width: 30px;
+	height: 30px;
 }
 
 
