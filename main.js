@@ -22,7 +22,6 @@ function createField(cols, rows) {
 			console.log(coordenadas.includes(`[${randomRow},${randomCol}]`))
 			counter++
 		}
-	
 	}
 
 	console.log(coordenadas)
@@ -49,13 +48,14 @@ createField(cols,rows);
 
 function restart () {
 	createField(cols,rows);
+	document.getElementById('happy-face').src  = 'happyface.jpg';
 }
 
 function gameOver (clickInput) {
 
 	if (clickInput) {
-		alert('GO NEXT')
-		restart()
+		document.getElementById('happy-face').src  = 'sadface.png';
+		// alert('GO NEXT')
 	} else {
 		console.log('YOU WON')	
 	}
@@ -78,6 +78,7 @@ function makeCellClickable () {
     	cell[i].addEventListener('click', function () {
     	const myCell = this;
     	if(myCell.classList.contains("bomb")) {
+    		myCell.innerHTML
     		gameOver(true);
     	 } else {
     	 	let bombCount = 0;
@@ -128,8 +129,8 @@ function makeCellClickable () {
 
     	 	console.log(bombCount)
 
-    	 	if (bombCount != 0) myCell.innerHTML = "<span class='bombcount'>"+bombCount+"</span>";
-    	 	else myCell
+    	 	
+    	 	myCell.innerHTML = "<span class='bombcount'>"+bombCount+"</span>";
     	}
   	});
   }	
@@ -138,8 +139,9 @@ function makeCellClickable () {
 function checkBomb(cell) {
 	if (cell && cell.classList.contains('bomb')) {
 		return 1
-	}
+	} else {
 	return 0
+	}
 }
 
 

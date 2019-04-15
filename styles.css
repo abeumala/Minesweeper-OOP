@@ -19,6 +19,22 @@ body {
 	margin-bottom: 0px;
 }
 
+nav {
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 35px;
+}
+
+#happy-face {
+  height: 70px;
+}
+
+input {
+	outline: none;
+}
+
 .col {
 	display: flex;
 	align-items: center;
@@ -64,6 +80,10 @@ body {
 	color: #000;
 	font-size: 15px;
 }
+
+/*.blank {
+	background-color: #fff;
+}*/
 
 .bombImage {
 	width: 30px;
