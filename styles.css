@@ -1,0 +1,59 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+
+#field {
+	border: 1px solid black;
+	display: inline-block;
+	padding: 0px;
+	margin-bottom: 0px;
+}
+
+.col {
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	background-color: grey;
+	border: 0.5px solid black;
+}
+
+.row {
+	font-size: 0px;
+	border-bottom: 0px;
+}
+
+.col.hidden {
+	background-color: grey;
+	cursor: pointer;
+}
+
+.col.hidden:hover {
+	background-color: #fff;
+}
+
+
+.bomb {    
+	background-color: red;
+	width: 40px;
+	height: 40px;
+	display: inline-block;
+	border: 0.5px solid black;
+	cursor: pointer;
+}
+
+.bomb:hover {
+	background-color: aquamarine;
+}
+
+
+
