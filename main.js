@@ -1,41 +1,44 @@
 
 const field = document.getElementById('field');
-const cell = document.getElementsByClassName('cell');
-console.log(cell, 'cell');
+const cell = document.getElementsByClassName('cell'); // class is added in createField for loop
 const cols = 20;
 const rows = 15;
+let bombsNumber = 0;
+let counting = false;
 
-function createField(cols, rows) {
+let content = document.getElementsByTagName('span')[0],
+    seconds = 0, 	
+    t;
+
+function createField (cols, rows) {
 
 	while (field.firstChild) {
-    field.removeChild(field.firstChild);
+    	field.removeChild(field.firstChild);
 	}
-	console.log(cell);
+
 	let counter = 0;
-	let bombsNumber = (cols * rows) * 0.2
+	bombsNumber = (cols * rows) * 0.2
+	let bombsCountdown = document.getElementById('bombs-counter');
+	bombsCountdown.innerHTML = bombsNumber;
 	let coordenadas = []
 	while(counter < bombsNumber) {
 		randomRow = Math.floor(Math.random() * rows);
 		randomCol = Math.floor(Math.random() * cols);
 		if(!coordenadas.includes(`[${randomRow},${randomCol}]`)){
 			coordenadas.push(`[${randomRow},${randomCol}]`)
-			console.log(coordenadas.includes(`[${randomRow},${randomCol}]`))
 			counter++
 		}
 	}
 
-	console.log(coordenadas)
-
-	for (let i = 0; i < rows; i++){
+	for (let i = 0; i < rows; i++) {
 		const row = document.createElement('div');
 		row.setAttribute('class', 'row');
 		for (let j = 0; j < cols; j++) {
 			const col = document.createElement('div')
-			col.setAttribute('class', 'col hidden cell');
+			col.setAttribute('class', 'col cell');
 			col.setAttribute('id', `${i} ${j}`);
 			if(coordenadas.includes(`[${i},${j}]`)){
-				col.setAttribute('class', 'col bomb cell')
-				row.appendChild(col);
+				col.setAttribute('class', 'col bomb cell');
 			}
 			row.appendChild(col);
 		}
@@ -47,15 +50,24 @@ function createField(cols, rows) {
 createField(cols,rows);
 
 function restart () {
+	clearTimer();
+	counting = false;
 	createField(cols,rows);
-	document.getElementById('happy-face').src  = 'happyface.jpg';
+	document.getElementById('happy-face').src  = './img/happyface.jpg';
+	let bombsCountdown = document.getElementById('bombs-counter');
+	bombsCountdown.innerHTML = bombsNumber;
 }
 
 function gameOver (clickInput) {
-
+	stopTimer()
 	if (clickInput) {
-		document.getElementById('happy-face').src  = 'sadface.png';
-		// alert('GO NEXT')
+		document.getElementById('happy-face').src  = './img/sadface.png';
+		let displayBombs = document.querySelectorAll('.bomb');
+		displayBombs.forEach(function(element) {
+			element.innerHTML = "<img class='flag-img' src='./img/bomb.png'/>"
+		})
+		//let revealBombs = document.getElementById('bomb');
+		//revealBombs.innerHTML = <img class="flag-img" src="./img/flag.png">
 	} else {
 		console.log('YOU WON')	
 	}
@@ -65,24 +77,37 @@ function gameOver (clickInput) {
 function makeCellClickable () {
 	for (var i = 0; i < cell.length; i++) {
 		cell[i].addEventListener('contextmenu', function(ev) {
-		    ev.preventDefault();
-		    let myCell = this;
-		    if (myCell.children[0] && myCell.children[0].nodeName == 'IMG') {
-		    	myCell.innerHTML = ""
-		    }else{
-				myCell.innerHTML = "<img class='bombImage' src='flag.png'/>"
+			if (!counting) { //counting is a global 
+				timer();	
+				counting = true;
+			}
+			console.log(ev);
+		    let myCells = this;
+		    console.log(myCells);
+		    event.preventDefault();
+		    if (myCells.children[0] && myCells.children[0].nodeName == 'IMG') {
+		    	bombsNumber++
+
+		    } else {
+				myCells.innerHTML = "<img class='flag-img' src='./img/flag.png'/>"
+				bombsNumber--
 		    }
 		    
+			let bombsCountdown = document.getElementById('bombs-counter');
+			bombsCountdown.innerHTML = bombsNumber;
 		    return false;
 		}, false);
     	cell[i].addEventListener('click', function () {
-    	const myCell = this;
-    	if(myCell.classList.contains("bomb")) {
-    		myCell.innerHTML
+    	const myCells = this;
+    	if (!counting) {
+			timer();	
+			counting = true;
+		}
+    	if(myCells.classList.contains("bomb")) {
     		gameOver(true);
     	 } else {
     	 	let bombCount = 0;
-    	 	let id = myCell.id.split(" ");
+    	 	let id = myCells.id.split(" ");
     	 	let y = parseInt(id[0]);
     	 	let x = parseInt(id[1]);
 
@@ -125,33 +150,42 @@ function makeCellClickable () {
     	 	let lowerCell = document.getElementById(lowerCellPos);
 
     	 	bombCount += checkBomb(lowerCell)
-
-
-    	 	console.log(bombCount)
-
     	 	
-    	 	myCell.innerHTML = "<span class='bombcount'>"+bombCount+"</span>";
+    	 	myCells.innerHTML = "<span class='bombcount'>"+bombCount+"</span>";
     	}
   	});
   }	
 }
 
+
 function checkBomb(cell) {
 	if (cell && cell.classList.contains('bomb')) {
 		return 1
-	} else {
-	return 0
-	}
+	} 
+	return 0	
+}
+
+function add() {
+    seconds++;
+    
+    //console.log(`${seconds}`);
+    content.textContent = seconds;
+}
+
+function timer() {
+    t = setInterval(add, 1000);
+}
+
+function stopTimer() {
+	clearInterval(t);
+}
+
+function clearTimer() {
+    content.textContent = "";
+    seconds = 0; 
 }
 
 
-// function CountBombs () {
-// 	bombCounter = 0;
-// 	for (var i = 0; i < rows; i++) {
-// 		for (var j = 0; j < cols; j++)
-// 			if ()
-// 		}
 
-// 	}
-// }
+
 

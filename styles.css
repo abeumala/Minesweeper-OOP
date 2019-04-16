@@ -9,6 +9,7 @@ body {
   margin: 0;
   padding: 0;
   text-align: center;
+  font-family: 'Roboto', sans-serif;
 }
 
 
@@ -19,12 +20,34 @@ body {
 	margin-bottom: 0px;
 }
 
-nav {
-  height: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 35px;
+#main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding-top: 50px;
+}
+
+#header {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 802px
+}
+
+.info-window {
+	height: 70px;
+	border: 1px solid black;
+	border-bottom: 0px;
+	width: 70px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 31px;
+}
+
+#bombs-counter {
+	font-size: 31px;
 }
 
 #happy-face {
@@ -45,22 +68,20 @@ input {
 	border: 0.5px solid black;
 }
 
+.col:hover {
+	background-color: #fff;
+}
+
+.col-clicked {
+	background-color: #fff;
+}
+
 .row {
 	display: flex;
 	flex-direction: row;
 	font-size: 0px;
 	border-bottom: 0px;
 }
-
-.col.hidden {
-	background-color: grey;
-	cursor: pointer;
-}
-
-.col.hidden:hover {
-	background-color: #fff;
-}
-
 
 .bomb {    
 	/*background-color: red;*/
@@ -69,6 +90,10 @@ input {
 	display: inline-block;
 	border: 0.5px solid black;
 	cursor: pointer;
+}
+
+.bomb-reveal {
+	background-
 }
 
 .bomb:hover {
@@ -85,7 +110,7 @@ input {
 	background-color: #fff;
 }*/
 
-.bombImage {
+.flag-img {
 	width: 30px;
 	height: 30px;
 }
