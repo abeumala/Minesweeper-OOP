@@ -33,14 +33,16 @@ body {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	width: 802px
+	margin-top: 30px;
+	width: 682px;
 }
 
 .info-window {
-	height: 70px;
+	height: 60px;
+	width: 60px;
+	margin-top: 10px;  /* molt cutre*/
 	border: 1px solid black;
 	border-bottom: 0px;
-	width: 70px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -53,7 +55,9 @@ body {
 }
 
 #happy-face {
-  height: 70px;
+  height: 60px;
+  width: auto;
+  margin-top: 10px;
   background-color: rgba(128,128,128,0.7)
 }
 
@@ -72,7 +76,7 @@ input {
 }
 
 .col:hover {
-	background-color: #fff;
+	background-color:rgb(201, 208, 219);	
 }
 
 .row {
@@ -104,7 +108,6 @@ input {
 	width: 97%;
 	height: 97%;
 	background-color: rgb(211, 217, 226);
-	font-style: oblique;
 	color: #000;
 	font-family: Helvetica;
 	font-size: 18px;
@@ -145,6 +148,5 @@ input {
 	width: 30px;
 	height: 30px;
 }
-
 
 

@@ -1,8 +1,8 @@
 
 const field = document.getElementById('field');
 const cell = document.getElementsByClassName('cell'); // class is added in createField for loop
-const cols = 20;
-const rows = 15;
+const cols = 17;
+const rows = 13;
 let bombsNumber = 0;
 let counting = false;
 
@@ -17,7 +17,7 @@ function createField (cols, rows) {
 	}
 
 	let counter = 0;
-	bombsNumber = (cols * rows) * 0.2
+	bombsNumber = Math.floor((cols * rows) * 0.2);
 	let bombsCountdown = document.getElementById('bombs-counter');
 	bombsCountdown.innerHTML = bombsNumber;
 	let coordenadas = []
