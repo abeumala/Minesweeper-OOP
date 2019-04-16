@@ -10,6 +10,7 @@ body {
   padding: 0;
   text-align: center;
   font-family: 'Roboto', sans-serif;
+  /* background: lightblue url("./img/bomb.png") no-repeat fixed center; */
 }
 
 
@@ -92,18 +93,50 @@ input {
 	cursor: pointer;
 }
 
-.bomb-reveal {
+/* .bomb-reveal {
 	background-
-}
+} */
 
 .bomb:hover {
 	cursor: pointer;
 	background-color: #fff;
 }
 
-.bombcount {
+.bombs-near {
+	width: 97%;
+	height: 97%;
+	background-color: #fff;
+	font-style: oblique;
 	color: #000;
-	font-size: 15px;
+	font-family: Helvetica;
+	font-size: 18px;
+	margin: 0px;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#flag-container {
+	width: 98%;
+	height: 98%;
+	background-color: #37e860;
+	margin: 0px;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#bomb-container {
+	width: 98%;
+	height: 98%;
+	background-color:#bc5127;
+	margin: 0px;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 /*.blank {

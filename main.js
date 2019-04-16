@@ -63,11 +63,14 @@ function gameOver (clickInput) {
 	if (clickInput) {
 		document.getElementById('happy-face').src  = './img/sadface.png';
 		let displayBombs = document.querySelectorAll('.bomb');
+
 		displayBombs.forEach(function(element) {
-			element.innerHTML = "<img class='flag-img' src='./img/bomb.png'/>"
-		})
-		//let revealBombs = document.getElementById('bomb');
-		//revealBombs.innerHTML = <img class="flag-img" src="./img/flag.png">
+			element.innerHTML = "<span id='bomb-container'><img class='flag-img' src='./img/bomb.png'/></span>"
+		});
+
+		// displayBombs.forEach(function(element) {
+		// 	element.innerHTML = "<img class='flag-img' src='./img/bomb.png'/>"
+		// });
 	} else {
 		console.log('YOU WON')	
 	}
@@ -76,20 +79,20 @@ function gameOver (clickInput) {
 
 function makeCellClickable () {
 	for (var i = 0; i < cell.length; i++) {
-		cell[i].addEventListener('contextmenu', function(ev) {
+		cell[i].addEventListener('contextmenu', function(event) {  //contextmenu captures right click
 			if (!counting) { //counting is a global 
 				timer();	
 				counting = true;
 			}
-			console.log(ev);
+
 		    let myCells = this;
-		    console.log(myCells);
-		    event.preventDefault();
+			event.preventDefault();
 		    if (myCells.children[0] && myCells.children[0].nodeName == 'IMG') {
+				myCells.innerHTML = "";
 		    	bombsNumber++
 
 		    } else {
-				myCells.innerHTML = "<img class='flag-img' src='./img/flag.png'/>"
+				myCells.innerHTML = "<span id='flag-container'><img class='flag-img' src='./img/flag.png'/></span>"
 				bombsNumber--
 		    }
 		    
@@ -97,7 +100,9 @@ function makeCellClickable () {
 			bombsCountdown.innerHTML = bombsNumber;
 		    return false;
 		}, false);
-    	cell[i].addEventListener('click', function () {
+
+
+    	cell[i].addEventListener('click', function () {  //left click event listener
     	const myCells = this;
     	if (!counting) {
 			timer();	
@@ -106,7 +111,7 @@ function makeCellClickable () {
     	if(myCells.classList.contains("bomb")) {
     		gameOver(true);
     	 } else {
-    	 	let bombCount = 0;
+    	 	let nearBombCount = 0;
     	 	let id = myCells.id.split(" ");
     	 	let y = parseInt(id[0]);
     	 	let x = parseInt(id[1]);
@@ -114,44 +119,44 @@ function makeCellClickable () {
     	 	let upperCellPos = y - 1 + " " + x;
     	 	let upperCell = document.getElementById(upperCellPos);
 
-    	 	bombCount += checkBomb(upperCell)
+    	 	nearBombCount += checkBomb(upperCell)
 
     	 	let upperRightCellPos = y - 1 + " " + (x + 1);
     	 	let upperRightCell = document.getElementById(upperRightCellPos);
 
-    	 	bombCount += checkBomb(upperRightCell)
+    	 	nearBombCount += checkBomb(upperRightCell)
 
     	 	let upperLeftCellPos = y - 1 + " " + (x - 1);
     	 	let upperLeftCell = document.getElementById(upperLeftCellPos);
 
-    	 	bombCount += checkBomb(upperLeftCell)
+    	 	nearBombCount += checkBomb(upperLeftCell)
 
     	 	let rightCellPos = y + " " + (x + 1);
     	 	let rightCell = document.getElementById(rightCellPos);
 
-    	 	bombCount += checkBomb(rightCell)
+    	 	nearBombCount += checkBomb(rightCell)
 
     	 	let leftCellPos = y + " " + (x - 1);
     	 	let leftCell = document.getElementById(leftCellPos);
 
-    	 	bombCount += checkBomb(leftCell)
+    	 	nearBombCount += checkBomb(leftCell)
 
     	 	let lowerRightCellPos = y + 1 + " " + (x + 1);
     	 	let lowerRightCell = document.getElementById(lowerRightCellPos);
 
-    	 	bombCount += checkBomb(lowerRightCell)
+    	 	nearBombCount += checkBomb(lowerRightCell)
 
     	 	let lowerLeftCellPos = y + 1 + " " + (x - 1);
     	 	let lowerLeftCell = document.getElementById(lowerLeftCellPos);
 
-    	 	bombCount += checkBomb(lowerLeftCell)
+    	 	nearBombCount += checkBomb(lowerLeftCell)
 
     	 	let lowerCellPos = y + 1 + " " + x;
     	 	let lowerCell = document.getElementById(lowerCellPos);
 
-    	 	bombCount += checkBomb(lowerCell)
+    	 	nearBombCount += checkBomb(lowerCell)
     	 	
-    	 	myCells.innerHTML = "<span class='bombcount'>"+bombCount+"</span>";
+    	 	myCells.innerHTML = "<span class='bombs-near'>"+nearBombCount+"</span>";
     	}
   	});
   }	
