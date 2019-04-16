@@ -87,7 +87,7 @@ function makeCellClickable () {
 
 		    let myCells = this;
 			event.preventDefault();
-		    if (myCells.children[0] && myCells.children[0].nodeName == 'IMG') {
+		    if (myCells.children[0] && myCells.children[0].children[0].nodeName === 'IMG') {
 				myCells.innerHTML = "";
 		    	bombsNumber++
 
@@ -186,7 +186,7 @@ function stopTimer() {
 }
 
 function clearTimer() {
-    content.textContent = "";
+    content.textContent = "0";
     seconds = 0; 
 }
 

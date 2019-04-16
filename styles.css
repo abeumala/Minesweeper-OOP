@@ -10,7 +10,7 @@ body {
   padding: 0;
   text-align: center;
   font-family: 'Roboto', sans-serif;
-  /* background: lightblue url("./img/bomb.png") no-repeat fixed center; */
+  background:rgba(128,128,128,0.7) url("./img/boom.png") repeat fixed center;
 }
 
 
@@ -45,6 +45,7 @@ body {
 	align-items: center;
 	justify-content: center;
 	font-size: 31px;
+	background-color: rgba(128,128,128,0.7);
 }
 
 #bombs-counter {
@@ -53,6 +54,7 @@ body {
 
 #happy-face {
   height: 70px;
+  background-color: rgba(128,128,128,0.7)
 }
 
 input {
@@ -70,10 +72,6 @@ input {
 }
 
 .col:hover {
-	background-color: #fff;
-}
-
-.col-clicked {
 	background-color: #fff;
 }
 
@@ -105,7 +103,7 @@ input {
 .bombs-near {
 	width: 97%;
 	height: 97%;
-	background-color: #fff;
+	background-color: rgb(211, 217, 226);
 	font-style: oblique;
 	color: #000;
 	font-family: Helvetica;
@@ -120,7 +118,7 @@ input {
 #flag-container {
 	width: 98%;
 	height: 98%;
-	background-color: #37e860;
+	background-color: rgb(211, 217, 226);
 	margin: 0px;
 
 	display: flex;
