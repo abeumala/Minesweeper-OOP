@@ -81,3 +81,6 @@ localStorage.js
     this.clear()
   }
 
+  ### DEMO
+  https://abeumala.github.io/Minesweeper-OOP/
+
