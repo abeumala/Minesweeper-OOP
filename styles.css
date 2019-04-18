@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto);
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
 
 html {
   box-sizing: border-box;
@@ -11,18 +12,26 @@ body {
   margin: 0;
   padding: 0;
   text-align: center;
-  font-family: "Roboto", sans-serif;
-  background-color: #e2e1e0;
+  font-family: 'Press Start 2P', cursive;
+  background: repeating-linear-gradient(
+    to bottom,
+    #0f0a1e,
+    #0f0a1e 2px,
+    lighten(#0f0a1e, 3%) 2px,
+    lighten(#0f0a1e, 3%) 4px
+  )
+  
 }
 
 #field {
 	background: #fff;
-  	border: 1px solid black;
+  border: 1px solid black;
 	display: inline-block;
 	padding: 0px;
 	margin-bottom: 0px;
-	border-radius: 2px;
-  	margin: 1rem;
+  border-radius: 2px;
+  padding: 0;
+  margin: 1rem;
 	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 }
@@ -44,7 +53,8 @@ body {
 	flex-direction: row;
 	justify-content: space-between;
 	margin-top: 30px;
-	width: 682px;
+  width: 682px;
+  margin-bottom: -18px;
 }
 
 .info-window {
@@ -54,30 +64,26 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	font-size: 31px;
-	background: #fff;padding: 0px;
+	font-size: 28px;
+	background: #e8e3e1;padding: 0px;
 	border-radius: 2px;
 	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 }
 
 .info-window:hover {
 	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
-#bombs-counter {
-	font-size: 31px;
-}
-
 #happy-face {
-  	height: 60px;
-  	width: auto;
-  	margin-top: 10px;
+	height: 60px;
+	width: auto;
+	margin-top: 10px;
 	background: #fff;
 	padding: 0px;
 	border-radius: 2px;
 	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 }
 
 #happy-face:hover {
@@ -133,7 +139,6 @@ input {
 	height: 97%;
 	background-color: rgb(211, 217, 226);
 	color: #000;
-	font-family: Helvetica;
 	font-size: 18px;
 	margin: 0px;
 
@@ -178,9 +183,9 @@ tr {
 }
 
 #welcome {
-	background: #fff;
-  	border-radius: 2px;
-  	margin: 1rem;
+	background-color: transparent;
+	/*border-radius: 2px;*/
+	margin: 1rem;
 	width: 600px;
 	height: 300px;
 	display: flex;
@@ -188,7 +193,7 @@ tr {
 	align-items: center;
 	justify-content: center;
 	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 }
 
 #welcome:hover {
@@ -310,7 +315,7 @@ h1 {
   user-select: none;
   border:0;
   border-radius: 2px;
-  background: #2196f3;
+  background: #e06331;
   color:#fff;
   outline:0;
   &:focus {
@@ -330,5 +335,34 @@ h1 {
                   0 5px 5px -3px rgba(0, 0, 0, 0.4);
   }
 }
+
+#font-page-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 70%;
+  height: 100px;
+  padding: 0px;
+  margin: 0px;
+}
+
+#img-container {
+  height: 100px
+  width: auto;
+  padding: 0px;
+}
+
+#mine-img {
+  border-radius: 50%;
+  padding: 0px;
+  width: 60%;
+  height: auto;
+}
+
+/* #splash-title {
+  margin-bottom: 200px;
+} */
 
 

@@ -1,7 +1,6 @@
 'use strict'
 
 function main () {
-
 	const mainElement = document.querySelector('#main');
 	let localStorage = new LocalStorage();
 
@@ -13,15 +12,23 @@ function main () {
 	function buildWelcomeScreen() {
 		const screen = buildDom(`
 			<section id="welcome">
-				<h1>MINESWEEPER</h1>
+				<div id="font-page-title">
+					<div id="image-container">
+						<img id="mine-img" alt="welcome"  src="./img/redbomb.png">
+					</div>
+					<h1 id="splash-title"> MINESWEEPER </h1>
+					<div id="image-container">
+						<img id="mine-img" alt="welcome"  src="./img/redbomb.png">
+					</div>
+				</div> 
 				<form>
-					<div class="group">      
+					<div class="group">    
 				      <input type="text" required id="text-input">
 				      <span class="highlight"></span>
 				      <span class="bar"></span>
 				      <label>Username</label>
-				    </div>
-					<input type="submit" class="md-btn md-btn-raised"></button>
+						</div>
+					<input type="submit" class="md-btn md-btn-raised">
 				</form>
 			</section>
 		`);
@@ -92,7 +99,7 @@ function main () {
 
 		buildGameScreen();
 		let game = new Game()
-		game.start(3,3);
+		game.start(13,17);
 
 		for (var i = 0; i < game.grid.cells.length; i++) {
 			game.grid.cells[i].cellElement.addEventListener('contextmenu', function(event) {  //contextmenu captures right click

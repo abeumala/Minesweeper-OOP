@@ -1,3 +1,5 @@
+'use strict'
+
 function Grid(rows, columns) {
 	this.rows = rows || 10
 	this.columns = columns || 10
