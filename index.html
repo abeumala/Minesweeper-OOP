@@ -9,14 +9,14 @@
     <title>Minesweeper</title>
 </head>
 <body>
-    <div id="main">
-    	<div id="header">
-    		<span id="timer" class="info-window">0</span>
-	    	<input type="image" onclick="restart()" id="happy-face" src="./img/happyface.jpg"/>
-	    	<span id="bombs-counter" class="info-window"></span>
-    	</div>	
-    	<div id="field"></div>
-    </div>
-    <script src="main.js"></script>
+    <div id="main"></div>   
+    <script src="libs/store.js/dist/store.everything.min.js"></script> <!-- import one of the libraries -->
+    <script type="text/javascript" src="./src/user.js"></script>
+    <script type="text/javascript" src="./src/cell.js"></script>
+    <script type="text/javascript" src="./src/grid.js"></script>
+    <script type="text/javascript" src="./src/timer.js"></script>
+    <script type="text/javascript" src="./src/game.js"></script>   
+    <script type="text/javascript" src="./src/localStorage.js"></script>
+    <script type="text/javascript" src="./src/main.js"></script>
 </body>
 </html>
