@@ -103,7 +103,7 @@ function main () {
 
 		buildGameScreen();
 		let game = new Game()
-		game.start(3,3);
+		game.start(13,17);
 
 		for (var i = 0; i < game.grid.cells.length; i++) {
 			game.grid.cells[i].cellElement.addEventListener('contextmenu', function(event) {  //contextmenu captures right click
