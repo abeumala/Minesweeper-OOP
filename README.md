@@ -1,7 +1,7 @@
 # Minesweeper-OOP
 
-main.js
-  function main() {
+## main.js
+  #### function main() {
     buildWelcomeScreen() --> startBUtton event listener onClick startGame()
     startGame() {
       buildGameScreen()
@@ -14,8 +14,8 @@ main.js
     buildWelcomeScreen();
   }
 
-game.js
-  function Game() {
+## game.js
+  ### function Game() {
     this.grid
     this.bombsNumber
     this.bombsLeft
@@ -32,8 +32,8 @@ game.js
     this.gameOver()
   }
   
-grid.js
-  function Grid(rows,cols) {
+## grid.js
+  ### function Grid(rows,cols) {
     this.rows
     this.cols
     this.cells = [];
@@ -43,8 +43,8 @@ grid.js
     this.assignBombs();
   }
 
-cell.js
-  function Cell(x,y) {
+## cell.js
+  ### function Cell(x,y) {
     this.x
     this.y
     this.isBomb
@@ -53,8 +53,8 @@ cell.js
     this.drawCell()
   }
   
-timer.js
-  function Timer () {
+## timer.js
+  ### function Timer () {
     this.content
     this.seconds
     this.t (to clear interval)
@@ -65,14 +65,14 @@ timer.js
     this.reset()
   }
 
-user.js
-  function User(username) {
+## user.js
+  ### function User(username) {
     this.username
     this.ranking
   }
 
-localStorage.js
-  function localStorage () {
+## localStorage.js
+  ### function localStorage () {
     this.db (databse)
     
     this.getUsers()

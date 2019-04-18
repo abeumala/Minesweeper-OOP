@@ -57,8 +57,12 @@ function main () {
 						<tr><td>Position</td><td>Username</td><td>Seconds</td></tr>
 					</tbody>
 				</table>
+				<button type="button" class="restart-btn">Click Me!</button>
 			</section>
 		`);
+
+		const restartButton = document.querySelector('.restart-btn');
+		restartButton.addEventListener('click', buildWelcomeScreen); 
 
 		let users = localStorage.getUsers();
 		users.sort(function(a, b) {
@@ -99,7 +103,7 @@ function main () {
 
 		buildGameScreen();
 		let game = new Game()
-		game.start(13,17);
+		game.start(3,3);
 
 		for (var i = 0; i < game.grid.cells.length; i++) {
 			game.grid.cells[i].cellElement.addEventListener('contextmenu', function(event) {  //contextmenu captures right click
