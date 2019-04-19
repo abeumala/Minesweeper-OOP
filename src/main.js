@@ -10,7 +10,7 @@ function main () {
 	}
 
 	function buildWelcomeScreen() {
-		const screen = buildDom(`
+		const screen = buildDom(` 
 			<section id="welcome">
 				<div id="font-page-title">
 					<div id="image-container">
@@ -34,7 +34,7 @@ function main () {
 		`);
 
 		const startButton = document.querySelector('.md-btn');
-		startButton.addEventListener('click', startGame);
+		startButton.addEventListener('click', startGame);  // as an event listener parameter do not put ()
 	}
 
 	function buildGameScreen() {
@@ -71,7 +71,7 @@ function main () {
 		let tableRef = document.querySelector('#rankingTable').getElementsByTagName('tbody')[0]
 		if (users.length > 0) {
 			users.map((user, index) => {
-				var newRow   = tableRef.insertRow(tableRef.rows.length);
+				var newRow = tableRef.insertRow(tableRef.rows.length);
 				var positionCell  = newRow.insertCell(0);
 				var positionText  = document.createTextNode(index + 1);
 				positionCell.appendChild(positionText);
@@ -96,8 +96,8 @@ function main () {
 	function startGame() {
 		let username = document.querySelector('#text-input').value
 		if (username.length < 3) return
-		let user = localStorage.getUser(username)
-		if (!user) {
+		let user = localStorage.getUser(username) // if && else inliners
+		if (!user) { //checking if there is a user with that username alraedy, if there is not, create new user
 			user = new User(username)
 		}
 
@@ -112,7 +112,7 @@ function main () {
 					game.counting = true;
 				}
 
-			    let myCell = this; 
+			  let myCell = this; 
 				event.preventDefault();
 			    if (myCell.children[0] && myCell.children[0].children[0].nodeName === 'IMG') { //putting flags and taking them out
 					myCell.innerHTML = "";  
@@ -125,7 +125,7 @@ function main () {
 
 				if (checkGameFinished(game)) {
 					let myRanking = user.ranking
-					if (myRanking == 0) {
+					if (myRanking === 0) {
 						user.ranking = game.timer.seconds;
 						localStorage.saveUser(user)
 					}
@@ -142,57 +142,67 @@ function main () {
 			}, false);
 
 
-	    	game.grid.cells[i].cellElement.addEventListener('click', function () {  //left click event listener
-		    	const myCell = this; //this equals each cell here
-		    	if (!game.counting) {
-					game.startTimer();	
-					game.counting = true;
+			game.grid.cells[i].cellElement.addEventListener('click', function () {  //left click event listener
+				const myCell = this; //this equals each cell here
+				if (!game.counting) {
+				game.startTimer();	
+				game.counting = true;
 				}
 
-		    	if(myCell.classList.contains("bomb")) {
-		    		game.gameOver();
-		    		buildGameOverScreen();
-		    	} else {
-		    	 	let nearBombCount = 0;
+				if(myCell.classList.contains("bomb")) {
+					game.gameOver();
+					buildGameOverScreen();
+				} else {
+					let nearBombCount = 0;
 					let id = myCell.id.split(" ");
 					let y = parseInt(id[0]);
 					let x = parseInt(id[1]);
-
-					for (var i = y - 1; i <= y + 1 ; i++) { // :D
-						for (let j = x - 1; j <= x + 1; j++) {
-							let cellAround = document.getElementById(i + " " + j)
-							if (cellAround) {
-								nearBombCount += checkBomb(cellAround);	
+					floodFill();
+					function floodFill () {
+						for (var i = y - 1; i <= y + 1 ; i++) { // :D
+							for (let j = x - 1; j <= x + 1; j++) {
+								let cellAround = document.getElementById(i + " " + j)
+								if (cellAround) {
+									nearBombCount += checkBomb(cellAround);	
+								}
 							}
+						// }
+						// if (nearBombCount === 0 && game.grid.cells[i].isBomb === false) {
+						// 	for (var i = y - 1; i <= y + 1 ; i++) {
+						// 		for (let j = x - 1; j <= x + 1; j++) {
+						// 			myCell.innerHTML = "<span class='bombs-near'></span>"
+						// 		}
+
+						// 	}	
+						// 	return floodFill();		
+						// } else {
+							myCell.innerHTML = "<span class='bombs-near'>"+nearBombCount+"</span>";
 						}
 					}
-					myCell.innerHTML = "<span class='bombs-near'>"+nearBombCount+"</span>";
-		    	}
-
+				}
 				if (checkGameFinished(game)) {
 					let myRanking = user.ranking
-					if (myRanking == 0) {
+					if (myRanking === 0) {
 						user.ranking = game.timer.seconds;
 						localStorage.saveUser(user)
 					}
 					if (myRanking > game.timer.seconds) {
 						user.ranking = game.timer.seconds;
 						localStorage.saveUser(user)
-					}
+					} else {
 		    		game.gameOver();
 		    		buildGameOverScreen();
-				}
-	  		});
-	  	}
-		
-		document.getElementById('happy-face').addEventListener('click', function() {
-	  		if (game.isOver) {
-	  			startGame();
-	  		}
-	  	})
-
+					}
+                }
+            });    
+        }
+        document.getElementById('happy-face').addEventListener('click', function() {
+            if (game.isOver) {
+                startGame();
+            }
+        });
 	}
-
+	
 	function checkGameFinished(game) {
 		let cells = game.grid.cells.map(item => {let type = Object.assign({}, item); return type});
 		let cellCount = 0;
@@ -208,21 +218,21 @@ function main () {
 		cells.map((cell) => {
 			if (cell.cellElement.children.length > 0) {
 				if (cell.cellElement.children[0].childNodes[0].nodeName != 'IMG') { //posem [0] perque es el primer i unic element a children/childNodes
-					cellCount++
+					cellCount++	
 				}
 				
 			}
 		})
 
 		if (cellCount == cells.length) {
-			return true
+			return true;
 		}
 
-		return false
+		return false;
 
 	}
 
-	buildWelcomeScreen() 
+	buildWelcomeScreen();
 
 }
 

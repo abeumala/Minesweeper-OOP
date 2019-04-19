@@ -13,31 +13,7 @@ body {
   padding: 0;
   text-align: center;
   font-family: 'Press Start 2P', cursive;
-  background: repeating-linear-gradient(
-    to bottom,
-    #0f0a1e,
-    #0f0a1e 2px,
-    lighten(#0f0a1e, 3%) 2px,
-    lighten(#0f0a1e, 3%) 4px
-  )
-  
-}
-
-#field {
-	background: #fff;
-  border: 1px solid black;
-	display: inline-block;
-	padding: 0px;
-	margin-bottom: 0px;
-  border-radius: 2px;
-  padding: 0;
-  margin: 1rem;
-	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-}
-
-#field:hover {
-  	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  background-color: #a1a4a8;
 }
 
 #main {
@@ -53,8 +29,8 @@ body {
 	flex-direction: row;
 	justify-content: space-between;
 	margin-top: 30px;
-  width: 682px;
-  margin-bottom: -18px;
+  width: 680px;
+  margin-bottom: 5px;
 }
 
 .info-window {
@@ -100,9 +76,29 @@ input {
 	justify-content: center;
 	width: 40px;
 	height: 40px;
-	background-color: grey;
-	border: 0.5px solid black;
+	background-color: #c1c4c9;
+  border-width:5px;  
+  border-style:ridge;
+  border-spacing: 0px;
+  border-color:#a1a4a8;
+  box-shadow: 5px 10px #888888;
+}
 
+.row .col {
+  border-bottom: 0px;
+  border-right: 0px;
+}
+
+.row div.col:last-child {
+  border-color: #a1a4a8;
+  border-right: 5px ridge #a1a4a8;
+  width: 45px;
+}
+
+#field div.row:last-child > .col {
+  border-color: #a1a4a8;
+  border-bottom: 5px ridge #a1a4a8;
+  height: 45px;
 }
 
 .col:hover {
@@ -110,11 +106,14 @@ input {
 	cursor: pointer;	
 }
 
+/* .row:first-child .col {
+  border-top: 0px;
+} */
+
 .row {
 	display: flex;
 	flex-direction: row;
 	font-size: 0px;
-	border-bottom: 0px;
 }
 
 .bomb {    
@@ -122,7 +121,6 @@ input {
 	width: 40px;
 	height: 40px;
 	display: inline-block;
-	border: 0.5px solid black;
 }
 
 /* .bomb-reveal {
